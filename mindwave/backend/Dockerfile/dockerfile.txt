@@ -1,0 +1,19 @@
+# Use a Python base image
+FROM python:3.9-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy all backend and brain files into the container
+COPY ./backend /app/backend
+COPY ./brain /app/brain
+
+# Expose FastAPI port
+EXPOSE 8000
+
+# Run the FastAPI server
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
