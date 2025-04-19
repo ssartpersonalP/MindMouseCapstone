@@ -1,0 +1,6 @@
+requests
+pyautogui
+mindwavemobile
+fastapi
+uvicorn
+bluetooth
